@@ -1,0 +1,22 @@
+version: "3.8"
+services: 
+  node-app:
+    build: ./api
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - mysql-db
+    networks:
+      - avilaqdaniel
+    
+  mysql-db:
+    build: ./mysql_database
+    volumes:
+      - VolumeMysql:/var/lib/mysql
+    networks:
+      - avilaqdaniel
+networks: 
+  avilaqdaniel:
+volumes: 
+  VolumeMysql:
+    name: MysqlClientFinalTask
